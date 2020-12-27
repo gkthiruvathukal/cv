@@ -1,0 +1,62 @@
+% Publications from a BibTeX file without multibib
+%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
+%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
+%\nocite{*}
+%\bibliographystyle{plain}
+
+\setlength\bibitemsep{1.5\itemsep}
+
+\section*{Books}
+\begin{refsection}[bibliography/books.bib]
+\nocite{*}
+\printbibliography[heading=none,sorting=ynt]
+\end{refsection}
+
+%\section*{Dissertation}
+%\begin{refsection}[bibliography/theses.bib]
+%\nocite{*}
+%\printbibliography[heading=none,sorting=ynt]
+%\end{refsection}
+
+\section*{Journal Articles}
+\begin{refsection}[bibliography/journal.bib]
+\nocite{*}
+\printbibliography[heading=none,sorting=ynt]
+\end{refsection}
+
+\section*{Conferences}
+\begin{refsection}[bibliography/inproceedings.bib]
+\nocite{*}
+\printbibliography[heading=none,sorting=ynt]
+\end{refsection}
+
+\section*{Magazine Articles}
+\begin{refsection}[bibliography/magazine.bib]
+\nocite{*}
+\printbibliography[heading=none,sorting=ynt]
+\end{refsection}
+
+\section*{Tech Reports}
+\begin{refsection}[bibliography/techreport.bib]
+\nocite{*}
+\printbibliography[heading=none,sorting=ynt]
+\end{refsection}
+
+\section*{Miscelleneous}
+\begin{refsection}[bibliography/misc.bib]
+\nocite{*}
+\printbibliography[heading=none,sorting=ynt]
+\end{refsection}
+
+%\bibliography{publications}                        % 'publications' is the name of a BibTeX file
+
+% Publications from a BibTeX file using the multibib package
+%\section{Publications}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
+
+%-----       letter       ---------------------------------------------------------

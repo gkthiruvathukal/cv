@@ -1,0 +1,9 @@
+dist/
+build/
+bibliography/
+
+*.pdf
+*.docx
+*.swp
+.DS_Store
+
