@@ -16,6 +16,7 @@ addons:
     - texlive-science
     - latexmk
     - lmodern
+    - biber
 script:
 - ./build-cv.sh
 after_success:
