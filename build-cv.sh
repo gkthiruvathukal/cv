@@ -16,3 +16,9 @@ sleep 5
 latexmk -output-directory="./build" -C -pdf ${MAIN}.tex
 latexmk -output-directory="./build" -pdf ${MAIN}.tex
 
+if [ -f build/gkthiruvathukal-cv.pdf ]; then
+  if [ -d ../gkthiruvathukal.github.io ]; then
+     cat bibliography/*.bib > ../gkthiruvathukal.github.io/_bibliography/papers.bib
+     echo "Copied latest bibliography to gkthiruvathukal.github.io folder (locally)"
+  fi 
+fi
