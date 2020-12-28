@@ -1,7 +1,5 @@
 sudo: false
 language: python
-python:
-- '3.4'
 addons:
   apt:
     packages:
@@ -18,6 +16,7 @@ addons:
     - texinfo
     - texlive-science
     - latexmk
+    - lmodern
 script:
 - ./build-cv.sh
 after_success:
