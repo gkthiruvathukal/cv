@@ -17,8 +17,8 @@ latexmk -output-directory="./build" -C -pdf ${MAIN}.tex
 latexmk -output-directory="./build" -pdf ${MAIN}.tex
 
 if [ -f build/gkthiruvathukal-cv.pdf ]; then
-  if [ -d ../gkt ]; then
-     cat bibliography/*.bib > ../gkthiruvathukal.github.io/_bibliography/papers.bib
-     echo "Copied latest bibliography to gkthiruvathukal.github.io folder (locally)"
+  if [ -d ../gkt.cs.luc.edu ]; then
+     cat bibliography/*.bib > ../gkt.cs.luc.edu/_bibliography/papers.bib
+     echo "Copied latest bibliography to website folder"
   fi 
 fi
