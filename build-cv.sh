@@ -1,5 +1,8 @@
 #!/bin/bash
 
+if [ -d ~/.linuxbrew ]; then
+  PATH=/usr/bin:$PATH
+fi
 
 MAIN=gkthiruvathukal-cv
 
