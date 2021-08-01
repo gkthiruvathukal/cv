@@ -9,7 +9,7 @@ on:
       - master
       - main
     tags:
-      - v0.*
+      - v*
 
 jobs:
   deploy:
@@ -27,7 +27,10 @@ jobs:
           root_file: gkthiruvathukal-cv.tex
       - name: Collate Bibliography
         run: |
-          find . -name '*.bib' -exec cat {} \; > gkthiruvathukal-cv.bib
+          pushd bibs >& /dev/null
+          bash gather.sh
+          popd >& /dev/null
+          cat bibliography/*.bib > gkthiruvathukal-cv.bib
       - name: Check for Resulting PDF and Collated Bibliography
         run: |
           ls gkthiruvathukal-cv.{pdf,bib}
