@@ -13,6 +13,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Working directory check
+        run: |
+          pwd
+          ls
       - name: Build LaTeX Document
         uses: xu-cheng/latex-action@v2
         with:
