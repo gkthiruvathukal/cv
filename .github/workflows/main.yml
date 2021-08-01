@@ -1,8 +1,6 @@
 # Action was shamelessly copied from here: https://stackoverflow.com/a/64311970
 
 
-name: Build CV with LaTeX
-
 on:
   push:
     branches:
@@ -21,16 +19,16 @@ jobs:
         run: |
           pwd
           ls
-      - name: Build LaTeX Document
-        uses: xu-cheng/latex-action@v2
-        with:
-          root_file: gkthiruvathukal-cv.tex
       - name: Collate Bibliography
         run: |
           pushd bibs >& /dev/null
           bash gather.sh
           popd >& /dev/null
           cat bibliography/*.bib > gkthiruvathukal-cv.bib
+      - name: Build LaTeX Document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: gkthiruvathukal-cv.tex
       - name: Check for Resulting PDF and Collated Bibliography
         run: |
           ls gkthiruvathukal-cv.{pdf,bib}
