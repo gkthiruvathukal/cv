@@ -26,6 +26,9 @@ jobs:
       - name: Collate Bibliography
         run: |
           find . -name '*.bib' -exec cat {} \; > gkthiruvathukal-cv.bib
+      - name: Check for Resulting PDF and Collated Bibliography
+        run: |
+          ls gkthiruvathukal-cv.{pdf,bib}
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
