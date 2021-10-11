@@ -7,7 +7,7 @@ if [ ! -d "$DEST" ]; then
   exit 1
 fi
 
-for bibtype in books inproceedings journal magazine misc techreport theses; do
+for bibtype in books inproceedings journal magazine misc techreport theses incollection; do
   echo "Processing $bibtype"
   BIBFILE=$DEST/${bibtype}.bib
   > $BIBFILE
