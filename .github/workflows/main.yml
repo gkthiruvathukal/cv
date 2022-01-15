@@ -44,7 +44,7 @@ jobs:
           bash gather.sh
           popd >& /dev/null
           cat bibliography/*.bib > gkthiruvathukal-cv.bib
-          python3 ./tools/scholarly-metrics.py
+          python3 ./tools/scholarly-metrics.py --name "George K. Thiruvathukal"
       - name: Build LaTeX Document
         uses: xu-cheng/latex-action@v2
         with:
