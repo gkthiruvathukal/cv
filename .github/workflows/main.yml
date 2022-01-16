@@ -33,7 +33,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies
-        run: python3 -m pip install scholarly
+        run: python3 -m pip install -r requirements.txt
       - name: Working directory check
         run: |
           pwd
@@ -45,6 +45,7 @@ jobs:
           popd >& /dev/null
           cat bibliography/*.bib > gkthiruvathukal-cv.bib
           python3 ./tools/scholarly-metrics.py --name "George K. Thiruvathukal"
+          python3 ./tools/github-commits.py  --first-year 2015 --last-year 2022 --username gkthiruvathukal
       - name: Build LaTeX Document
         uses: xu-cheng/latex-action@v2
         with:
