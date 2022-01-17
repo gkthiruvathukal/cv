@@ -5,23 +5,48 @@ import argparse
 
 from functools import reduce
 
-CVLINE='\cvline{GitHub}{%(commits)s contributions from %(first_year)s to %(last_year)s}\n'
+CVLINE='\cvline{GitHub}{%(commits)s contributions from %(first_year)s-%(last_year)s at \href{https://github.com/%(username)s}{GitHub}}\n'
 
 def get_argparse():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
-        '--username', help="GitHub username", required=True)
+        '--username',
+        help="GitHub username",
+        required=True)
+
     parser.add_argument(
-        '--first-year', type=int, help="First Year", required=True)
+        '--first-year',
+        type=int,
+        help="First Year",
+        required=True)
+
     parser.add_argument(
-        '--last-year', type=int, help="Last Year", default=0, required=False)
+        '--last-year',
+        type=int,
+        help="Last Year",
+        default=0,
+        required=False)
+
     parser.add_argument(
-        '--raw', type=bool, help="output raw number", default=False, required=False)
+        '--raw',
+        help="output raw number",
+        const=True,
+        required=False,
+        action='store_const')
+
     parser.add_argument(
-        '--modern-cv', type=bool, help="output cvline for modern-cv", default=True, required=False)
+        '--modern-cv',
+        const=True,
+        help="output cvline for modern-cv", 
+        required=False,
+        action='store_const')
+
     parser.add_argument(
-        '--output', help="output filename", default="github-contributions.tex", required=False)
+        '--output',
+        help="output filename",
+        default="github-contributions.tex",
+        required=False)
     return parser
 
 parser = get_argparse()
@@ -45,6 +70,6 @@ if args.raw:
    print(commit_sum)
 
 if args.modern_cv:
-   cvline_vars = { 'commits' : commit_sum, 'first_year' : args.first_year, 'last_year' : args.last_year }
+   cvline_vars = { 'commits' : commit_sum, 'first_year' : args.first_year, 'last_year' : args.last_year, 'username' : args.username}
    with open(args.output, "w") as outfile:
       outfile.write(CVLINE % cvline_vars)
