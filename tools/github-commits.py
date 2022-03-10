@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-import xml.etree.ElementTree as ET
+#import xml.etree.ElementTree as ET
+from bs4 import BeautifulSoup
 import requests
 import argparse
 
@@ -61,10 +62,11 @@ for year in range(args.first_year, args.last_year + 1):
    request = requests.get('https://github.com/users/%(username)s/contributions' % vars(args), params=payload)
    with open('/tmp/some.xml', 'w') as outfile:
        outfile.write(request.text)
-   tree = ET.parse('/tmp/some.xml')
 
-   for element in tree.findall(".//svg/g/g/rect"):
-       commit_sum += int(element.attrib['data-count'])
+   soup = BeautifulSoup(request.text, features="html.parser")
+
+   for rect in soup.find_all("rect"):
+       commit_sum += int(rect.get('data-count', 0))
    
 if args.raw:
    print(commit_sum)

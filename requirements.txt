@@ -1,2 +1,3 @@
 scholarly
 requests
+beautifulsoup4
