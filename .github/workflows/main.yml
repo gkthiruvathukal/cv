@@ -45,7 +45,7 @@ jobs:
           popd >& /dev/null
           cat bibliography/*.bib > gkthiruvathukal-cv.bib
           python3 ./tools/scholarly-metrics.py --name "George K. Thiruvathukal"
-          python ./tools/github-commits.py --username gkthiruvathukal --first-year 2015 --last-year 2022  --modern-cv
+          python3 ./tools/github-commits.py --username gkthiruvathukal --first-year 2015 --last-year 2022  --modern-cv
       - name: Build LaTeX Document
         uses: xu-cheng/latex-action@v2
         with:
