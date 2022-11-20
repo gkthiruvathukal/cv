@@ -13,6 +13,7 @@ for bibtype in books inproceedings journal magazine misc techreport theses incol
   > $BIBFILE
   for entry in $(ls -r ${bibtype}/*.bib); do
     cat "$entry" >> $BIBFILE
+    echo >> $BIBFILE
   done
 done
 
