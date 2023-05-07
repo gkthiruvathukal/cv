@@ -22,7 +22,7 @@ sleep 5
 
 echo "Obtaining Google Scholar Data"
 python tools/scholarly-metrics.py --name "George K. Thiruvathukal"
-python3 tools/github-commits.py  --first-year 2017 --last-year 2023 --username gkthiruvathukal --modern-cv
+#python3 tools/github-commits.py  --first-year 2017 --last-year 2023 --username gkthiruvathukal --modern-cv
 sleep 5
 
 latexmk -output-directory="./build" -C -pdf ${MAIN}.tex
