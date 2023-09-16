@@ -1,3 +1,6 @@
 scholarly
 requests
 beautifulsoup4
+yq
+pyyaml
+
