@@ -3,10 +3,12 @@
 from bs4 import BeautifulSoup
 import requests
 import argparse
+import re
+import locale
 
 from functools import reduce
 
-CVLINE='\cvline{GitHub}{%(commits)s contributions from %(first_year)s-%(last_year)s at \href{https://github.com/%(username)s}{GitHub}}\n'
+CVLINE='\cvline{GitHub}{%(commits)s contributions during %(first_year)s--%(last_year)s at \href{https://github.com/%(username)s}{klaeufer}}\n'
 
 def get_argparse():
     parser = argparse.ArgumentParser()
@@ -56,17 +58,21 @@ args = parser.parse_args()
 if args.last_year < args.first_year:
     args.last_year = args.first_year
 
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+
 commit_sum = 0
 for year in range(args.first_year, args.last_year + 1):
-   payload = {'to': '-'.join([str(year), '12', '31'])}
-   request = requests.get('https://github.com/users/%(username)s/contributions' % vars(args), params=payload)
+   args.end_date = '-'.join([str(year), '12', '31'])
+   url = 'https://github.com/users/%(username)s/contributions?to=%(end_date)s' % vars(args)
+   request = requests.get(url)
    with open('/tmp/some.xml', 'w') as outfile:
        outfile.write(request.text)
 
    soup = BeautifulSoup(request.text, features="html.parser")
 
-   for rect in soup.find_all("rect"):
-       commit_sum += int(rect.get('data-count', 0))
+   for rect in soup.find_all("h2", class_="f4"):
+       count = re.search(r'\d+(?:,\d+)?', rect.string).group()
+       commit_sum += locale.atoi(count)
    
 if args.raw:
    print(commit_sum)
