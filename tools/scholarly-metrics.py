@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-BIBLIOMETRICS_TEX = """
+BIBLIOMETRICS_TEX = r"""
 \section*{Bibliometrics}
 
 \cvline{Citations}{%(citedby)s on \href{%(scholar_url)s}{Google Scholar}}
