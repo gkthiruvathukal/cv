@@ -20,7 +20,7 @@ def get_argparse():
     parser.add_argument(
         '--name', help="scholar's name", required=True)
     parser.add_argument(
-        '--output', help="output filename", default="scholarly-bibliometrics.tex", required=False)
+        '--output', help="output filename", default="99-scholarly-bibliometrics.tex", required=False)
     return parser
 
 
