@@ -2,40 +2,26 @@
 
 % modern themes
 \moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
-\moderncvcolor{purple}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
-
-\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
-
+\moderncvcolor{red}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
 \nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
-
-
-% URL hanlding
-
-%\usepackage{hyperref}
-\usepackage{breakurl}
 
 % character encoding
 \usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
 %\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
 
 % adjust the page margins
-\usepackage[scale=0.75]{geometry}
-\geometry{margin=0.75in}
+%\usepackage[scale=0.75]{geometry}
+\usepackage{fullpage}
 %\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
 %\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 
-%$\usepackage[maxbibnames=99,backend=biber,style=authoryear,natbib=true,dashed=false,sorting=ydnt]{biblatex}
-\usepackage[maxbibnames=99,backend=biber,natbib=true,sorting=ydnt]{biblatex}
+\usepackage[maxbibnames=99,backend=biber,style=numeric,natbib=true,dashed=false]{biblatex}
 
+%\usepackage[backend=biber,style=numeric]{biblatex} % or style=numeric-comp for compressed numbers
 
+\usepackage{xcolor}
 
-\addbibresource{bibliography/books.bib}
-\addbibresource{bibliography/inproceedings.bib}
-\addbibresource{bibliography/journal.bib}
-\addbibresource{bibliography/magazine.bib}
-\addbibresource{bibliography/misc.bib}
-\addbibresource{bibliography/theses.bib}
-\addbibresource{bibliography/techreport.bib}
 
 \usepackage{import}
 
@@ -46,12 +32,32 @@
   {}{}% <success><failure>
   
 % personal data
-\name{George}{K.\ Thiruvathukal, PhD}
-\title{C.V.}                               % optional, remove / comment the line if not wanted
+\name{George}{K. Thiruvathukal, PhD}
+\title{CV}                               % optional, remove / comment the line if not wanted
 \address{Loyola University Chicago}{1032 W Sheridan Road}{Chicago, IL 60660}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
 %\phone[mobile]{+1.773.829.4872}                   % optional, remove / comment the line if not wanted
 \phone[office]{+1.773.508.8931}                    % optional, remove / comment the line if not wanted
 %\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
 \email{gthiruvathukal@luc.edu}                               % optional, remove / comment the line if not wanted
 \homepage{gkt.sh}
+\social[linkedin]{gkthiruvathukal}                               % optional, remove / comment the line if not wanted
+\social[github]{gkthiruvathukal}                               % optional, remove / comment the line if not wanted
+\social[orcid]{0000-0002-0452-5571}                     % optional, remove / comment the line if not wanted
+\extrainfo{Updated on \today}
+% optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+%\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
 
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+
+%\usepackage{breakurl}
+%\usepackage{hyperref}

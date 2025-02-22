@@ -1,0 +1,68 @@
+\subsection{Messaging Middleware for Parallel/Distributed Systems}
+
+\cvline{Enhanced Actors}{
+While it has been many years since I completed work on Enhanced Actors in 1994-1995, in many ways the work remains an anchor of my current efforts on frameworks for parallel and distributed computing. The Enhanced Actors model and implementation was one of the first object-oriented frameworks to support parallel computing. In a nutshell, the actors model (conceived by Gul Agha) and the Memo system are combined to create a distributed directory of parallel objects. Contrasted with the MPI (Message Passing Interface) and other explicit messaging systems for parallel computing, Enhanced Actors represents a parallel system with the benefits of distributed systems by supporting location, reference, naming, replication, and migration transparency. The implementation work was done by myself in C++ on the IBM SP-2 (PowerParallel) system.
+}
+
+\begin{refsection}
+    \nocite{george_k._thiruvathukal_enhanced_1995}
+    \nocite{george_k._thiruvathukal_simulation_1991}
+    \nocite{george_k._thiruvathukal_toward_1994}
+    \printbibliography[heading=none]
+\end{refsection}
+
+
+
+\cvline{Distributed Directories of Queues}
+{
+The Distributed Memo System (D-Memo) was a component of the Ph.D. thesis done by my colleague William T. O'Connell in which I was a key contributor. The basic idea of the Memo system is based on a clever simplification of tuple spaces described by Thomas W. Christopher. In short: A Memo system is nothing more than a shared directory (a hash-table-like data structure) of unordered queues. There are a number of primitives: get (blocking), put (non-blocking), read (non-blocking), and timedGet (blocking for a specified duration). Our contribution was to develop a version of this framework that addressed heterogeneity (e.g. systems with different architecture) and could work on any parallel systems, subject to adding runtime support. In the end, we settled for a version that worked heterogeneously on networks of workstations using TCP/IP, a decision that proved prescient, since most parallel systems today more closely resemble networks of workstations.
+}
+
+\begin{refsection}
+    \nocite{william_t._oconnell_distributed_1997}
+    \nocite{william_t._oconnell_distributed_1994}
+    \nocite{william_oconnell_generic_1994}
+    \printbibliography[heading=none]
+\end{refsection}
+
+
+\cvline{Java on Networks of Workstations}
+{
+After completing my dissertation, Java began to emerge as an alternative to the perplexing world of C++. Touted as the distributed language of the future, early versions of Java lacked the ability to transport objects in a serial form (a problem I had solved in my own research on Enhanced Actors). Nevertheless, Java represented an important industry shift toward more reliable and reproducible computing--something to be embraced. In the world of parallel computing, most practitioners were well-versed in writing codes that were difficult to port to new platforms, and a lot of time was expended thinking about low-level matters besides the scientific problem being solved.
+\vspace{5pt}
+\\
+Java on Networks of Workstations (JavaNOW) was a research prototype developed after I completed my dissertation but remained on the faculty at IIT as a lecturer. This work was done jointly with graduate student Shahzad Bhatti (whom I supervised) and joined later by Phil Dickens. The JavaNOW work was an extension of the work done by William O'Connell (a fellow Ph.D. student) and myself under Thomas W. Christopher (our Ph.D. advisor). We were able to use JavaNOW to develop a number of interesting applications; however, due to major performance problems with Java at the time, the overall approach did not prove to be viable. Additionally, tuple spaces are ideal for process-based parallelism but limited when it comes to task-level parallelism with coordination. Later work on Computational Neighborhood would remedy these limitations.}
+
+\begin{refsection}
+    \nocite{george_k._thiruvathukal_java_2000}
+    \printbibliography[heading=none]
+\end{refsection}
+
+
+\cvline{Grid-enabled Message Passing Interface (MPI)}
+{
+After completing the Ph.D., my first bona fide academic/research position was at Argonne National Laboratory working on the Globus grid computing project. After having worked on a number of heterogeneous message-passing systems, I was given the opportunity to work on a new implementation of MPI that would work in a wide-area setting. (The idea of wide-area computing is a bit of a misnomer, since it is a specialized form of what we were really aiming to achieve. We assumed that all compute resources were connected by TCP/IP.) I was able to complete the first-generation prototype using the Nexus communication library, which is now a part of the Globus toolkit. This early version was tested in a battlefield simulation project at CACR/Caltech with generally good results.
+\vspace{5pt}
+\\
+After leaving Argonne to pursue other business opportunities and/or a university position, the work continued to be done using the Globus toolkit by Nick Karonis, who is now an associate professor at Northern Illinois University. It is now distributed as MPICH-G in the MPICH toolkit.}
+
+\begin{refsection}
+    \nocite{ian_foster_wide-area_1998}
+    \nocite{ian_foster_technologies_1997}
+    \nocite{ian_foster_computational_1998}
+    \printbibliography[heading=none]
+\end{refsection}
+
+
+
+\cvline{Remote Method Invocation}
+{
+Remote Method Invocation is a framework for distributed computing released by Sun Microsystems. As part of my work in the Java Grande community, which is focused on improvements to Java that will enable its use in high-end scientific and technical computing problems, I published a paper (with two of my students) describing problems with the RMI framework and a prototype RMI implementation that addresses a number of problems related to RMI design and performance. I also worked with many influential members of the high-performance computing community to publish the Java Grande Report, which was presented at Sun Microsystems to leaders of the Java development team.
+}
+
+\begin{refsection}
+    \printbibliography[heading=none]
+    \nocite{george_k._thiruvathukal_reflective_1998}
+\end{refsection}
+
+

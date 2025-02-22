@@ -1,0 +1,53 @@
+\setlength\bibitemsep{1.5\itemsep}
+
+
+% Custom Highlight Author Field Format
+
+
+% Failed Experiment
+% \begin{refsection}[bibliography/gkt-books]
+%   \begingroup
+%     \DeclareFieldFormat{author}{%
+%       \ifdefsubstring{#1}{Thiruvathukal}%
+%         {\textbf{\textbf{#1}}}%
+%         {#1}%
+%     }
+%     \nocite{*}
+%     \printbibliography[sorting=ynt, title={Books Test}]
+%   \endgroup
+% \end{refsection}
+
+\begin{refsection}[bibliography/gkt-books]
+\nocite{*} 
+\printbibliography[sorting=ynt, title=Books]   
+\end{refsection}
+
+\begin{refsection}[bibliography/gkt-inproceedings]
+\nocite{*} 
+\printbibliography[sorting=ynt, title=Conference Papers]   
+\end{refsection}
+
+\begin{refsection}[bibliography/gkt-journal]
+\nocite{*} 
+\printbibliography[sorting=ynt, title=Journal Articles]   
+\end{refsection}
+
+\begin{refsection}[bibliography/gkt-magazine]
+\nocite{*} 
+\printbibliography[sorting=ynt, title=Magazine Articles]   
+\end{refsection}
+
+\begin{refsection}[bibliography/gkt-techreport]
+\nocite{*} 
+\printbibliography[sorting=ynt, title=Technical Reports]   
+\end{refsection}
+
+\begin{refsection}[bibliography/gkt-misc]
+\nocite{*} 
+\printbibliography[sorting=ynt, title=Miscellaneous]   
+\end{refsection}
+
+\begin{refsection}[bibliography/gkt-theses]
+\nocite{*} 
+\printbibliography[sorting=ynt, title=Thesis/Dissertation]   
+\end{refsection}
