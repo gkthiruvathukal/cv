@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v2
         with:
           python-version: '3.11'
       - name: Upgrade pip
@@ -38,25 +38,22 @@ jobs:
         run: |
           pwd
           ls
-      - name: Collate Bibliography
+      - name: Fetch bibliography and bibliometrics
         run: |
-          pushd bibs >& /dev/null
-          bash gather.sh
-          popd >& /dev/null
-          cat bibliography/*.bib > gkthiruvathukal-cv.bib
-          python3 ./tools/scholarly-metrics.py --name "George K. Thiruvathukal"
-          python3 ./tools/github-commits.py --username gkthiruvathukal --first-year 2015 --last-year 2022  --modern-cv
+          ./pre-build.sh
       - name: Build LaTeX Document
         uses: xu-cheng/latex-action@v2
         with:
-          root_file: gkthiruvathukal-cv.tex
+          root_file: cv-main.tex
       - name: Check for Resulting PDF and Collated Bibliography
         run: |
-          ls gkthiruvathukal-cv.{pdf,bib}
+          mv cv-main.pdf ${{ github.repository_owner }}.pdf
+          cat bibliography/*.bib > ${{ github.repository_owner }}.bib
+          ls ${{ github.repository_owner }}.{pdf,bib}
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            gkthiruvathukal-cv.bib
-            gkthiruvathukal-cv.pdf
+            ${{ github.repository_owner }}.bib
+            ${{ github.repository_owner }}.pdf

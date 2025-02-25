@@ -1,19 +1,15 @@
 #!/usr/bin/env python3
 
 
-BIBLIOMETRICS_TEX = r"""
-\section*{Bibliometrics}
-
-\cvline{Citations}{%(citedby)s on \href{%(scholar_url)s}{Google Scholar}}
-\cvline{h-index}{%(hindex)s}
-\cvline{i10-index}{%(i10index)s}
+BIBLIOMETRICS_TEX = """
+\\cvline{Citations}{%(citedby)s on \\href{%(scholar_url)s}{Google Scholar}}
+\\cvline{h-index}{%(hindex)s}
+\\cvline{i10-index}{%(i10index)s}
 """
 
 SCHOLAR_URL="https://scholar.google.com/citations?hl=en\\&user=%(scholar_id)s"
 
 import argparse
-import json
-from scholarly import scholarly
 
 def get_argparse():
     parser = argparse.ArgumentParser()
@@ -23,6 +19,7 @@ def get_argparse():
         '--output', help="output filename", default="99-scholarly-bibliometrics.tex", required=False)
     return parser
 
+from scholarly import scholarly
 
 parser = get_argparse()
 args = parser.parse_args()
@@ -30,9 +27,7 @@ args = parser.parse_args()
 search_query = scholarly.search_author(args.name)
 author = next(search_query)
 
-data = scholarly.fill(author, sections=['basics', 'indices', 'coauthors'])
-
-print(json.dumps(data, indent=3))
+scholarly.pprint(scholarly.fill(author, sections=['basics', 'indices', 'coauthors']))
 
 scholar_url = SCHOLAR_URL % author
 

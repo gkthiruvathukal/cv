@@ -1,10 +1,25 @@
 dist/
 build/
-#bibliography/
+bibliography/
+99-*
+cv-main.tex
 
-*.pdf
+*.aux
+*.bbl
+*.bcf
+*.blg
 *.docx
+*.fls 
+*.fdb_latexmk
+*.log 
+*.out 
+*.pdf 
+*.run.xml 
 *.swp
-.DS_Store
+*.synctex*
+*.BAK
 
-scholarly-bibliometrics.tex
+Pipfile*
+.venv/
+
+.DS_Store

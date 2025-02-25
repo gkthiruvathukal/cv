@@ -1,25 +1,20 @@
-My CV
-======
+[![Deploy CV](https://github.com/klaeufer/cv/actions/workflows/main.yml/badge.svg)](https://github.com/klaeufer/cv/actions/workflows/main.yml)
 
-This is my CV in LaTeX. It demonstrates the following:
+# Curriculum Vitae
 
-- Making effective use of the *excellent* Modern CV theme (moderncv).
-- Managing my bibliographic entries with *separate* `.bib` files. This makes it easy to check whether I have included all of my publications and other research artifacts.
-- Using `\printbibliography` to manage the different types of publications (e.g. conference papers, journal articles, magazine articles, books, etc.)
-- Programmatically obtaining and inserting Google Scholar and GitHub metrics.
-- Using texlive action to build the CV on every commit.
-- Releasing the `.bib` and `.pdf` at https://github.com/gkthiruvathukal/cv/releases whenever a given commit is tagged with `git tag v<version>`
+This is my CV in LaTeX based on the [moderncv](https://ctan.org/pkg/moderncv) class following [gkthiruvathukal's example](https://github.com/gkthiruvathukal/cv).
 
-Yes, there are excellent GUIs for LaTeX (e.g. Overleaf), which I use for day-to-day work. This is one situation where I decided to use a regular GitHub repo, because I need to generate some of the content for various sections in my CV. Hopefully, one day, such scripting would be possible on the hosted LaTeX Solutions. Even so, GitHub Actions allows me to do all of the *good stuff* without much pain/suffering.
+You can view/download the latest version [here](https://github.com/klaeufer/cv/releases/latest/download/klaeufer.pdf).
 
-Build Status
---------------
+All personal information is in LaTeX sources in the `./data` subdirectory, from which the main LaTeX source gets generated automatically:
 
-[![Deploy CV](https://github.com/gkthiruvathukal/cv/actions/workflows/main.yml/badge.svg)](https://github.com/gkthiruvathukal/cv/actions/workflows/main.yml)
+- We fetch the bibliography data from the Zotero group URLs in `zotero-bibs.txt`.
+- `data/personal-settings.sh` contains these settings:
 
+  - `FULLNAME` for the Google Scholar data
+  - `GITHUB_USER` for the activity stats
+  - `DOMAIN`, optional local directory, parallel to this repo, containing the user's static website source; the collated bib gets copied to `../${DOMAIN}/_bibliography/papers.bib`
 
-Download
----------
-
-Download the [Latest Release of my CV](https://github.com/gkthiruvathukal/cv/releases/latest/download/gkthiruvathukal-cv.pdf) 
-
+- Files named `0[0-9]-*.tex` become part of the document *preamble*.
+- Files named `[1-9][0-9]-*.tex` constitute the document *body*.
+- The files `99-github-contributions.tex` and `99-scholarly-bibliometrics.tex` are generated automatically and can be included in a section of the document body.

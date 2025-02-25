@@ -1,0 +1,92 @@
+% possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% modern themes
+\moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{maroon}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+
+\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+
+% See if this will fix the font scaling problem
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+
+
+% URL hanlding
+
+%\usepackage{hyperref}
+\usepackage{breakurl}
+
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+\geometry{margin=0.75in}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+%$\usepackage[maxbibnames=99,backend=biber,style=authoryear,natbib=true,dashed=false,sorting=ydnt]{biblatex}
+\usepackage[maxbibnames=99,backend=biber,natbib=true,sorting=ydnt]{biblatex}
+\usepackage{import}
+
+\usepackage{etoolbox,changepage}
+\patchcmd{\makehead}% <cmd>
+  {0.8\textwidth}% <search>
+  {\linewidth}% <replace>
+  {}{}% <success><failure>
+
+
+% Macros for highlighting students in bib items  
+% https://tex.stackexchange.com/a/304968
+%
+% In each bib item, indicate authors to highlight:
+%
+% author = {Doe, John and Smith, Alice and Brown, Bob},
+% author+an = {2=graduate;3=undergrad;5=myself},
+
+\renewcommand*{\mkbibnamegiven}[1]{%
+  \ifitemannotation{undergrad}
+    {\textbf{#1}}
+    {\ifitemannotation{graduate}
+      {{#1}}
+      {\ifitemannotation{myself}
+        {\textit{#1}}
+        {#1}}}}
+
+\renewcommand*{\mkbibnamefamily}[1]{%
+  \ifitemannotation{undergrad}
+    {\textbf{#1}}
+    {\ifitemannotation{graduate}
+      {{#1}$^*$}
+      {\ifitemannotation{myself}
+        {\textit{#1}}
+        {#1}}}}
+
+% Macros for highlighting bibitems in a particular area
+% https://tex.stackexchange.com/a/149753
+%
+% In the document, add desired items to the category:
+%
+% \addtocategory{education}{cite2}
+
+\newcommand{\markedu}{\textbf{*}}
+
+\usepackage{xspace}
+\usepackage[svgnames]{xcolor}
+\DeclareBibliographyCategory{education}
+% the colour definition
+\colorlet{eduentry}{Maroon}% let 'impentry' = Maroon
+
+% Inform biblatex that all books in the 'important' category deserve
+% special treatment, while all others do not
+\AtEveryBibitem{%
+  \ifcategory{education}%
+%    {\color{eduentry}}%
+%    {\markedu\xspace}%
+    {\markedu\,}%
+    {}%
+  }
