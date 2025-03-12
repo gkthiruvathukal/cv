@@ -14,7 +14,7 @@ import argparse
 def get_argparse():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        '--name', help="scholar's name", required=True)
+        '--profile', help="Google Scholar profile ID", required=True)
     parser.add_argument(
         '--output', help="output filename", default="99-scholarly-bibliometrics.tex", required=False)
     return parser
@@ -24,8 +24,7 @@ from scholarly import scholarly
 parser = get_argparse()
 args = parser.parse_args()
 
-search_query = scholarly.search_author(args.name)
-author = next(search_query)
+author = scholarly.search_author_id(args.profile)
 
 scholarly.pprint(scholarly.fill(author, sections=['basics', 'indices', 'coauthors']))
 

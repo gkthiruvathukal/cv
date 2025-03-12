@@ -12,7 +12,8 @@ latexmk -output-directory="./build" -pdf ${MAIN}.tex
 
 if [ -f build/${MAIN}.pdf ]; then
   if [ -d ../${DOMAIN} ]; then
-     cat bibliography/*.bib > ../${DOMAIN}/_bibliography/papers.bib
-     echo "Copied latest bibliography to website folder"
+    mkdir -p ../${DOMAIN}/_bibliography
+    cat bibliography/*.bib > ../${DOMAIN}/_bibliography/papers.bib
+    echo "Copied latest bibliography to website folder"
   fi 
 fi

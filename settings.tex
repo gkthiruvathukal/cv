@@ -1,8 +1,8 @@
 % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
 
+\moderncvcolor{maroon}  % color options 'blue' (default), 'burgundy', 'orange', 'green', 'red', 'purple', 'grey' and 'black'
 % modern themes
-\moderncvcolor{maroon}                                % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
-\moderncvstyle{banking}                            % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvstyle{banking} % style options are 'casual' (default), 'classic', 'oldstyle', 'banking', and fancy
 
 \renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
 
@@ -14,7 +14,7 @@
 %\usepackage{lmodern}
 
 
-% URL hanlding
+% URL handling
 
 %\usepackage{hyperref}
 \usepackage{breakurl}
@@ -30,7 +30,7 @@
 %\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
 
 %$\usepackage[maxbibnames=99,backend=biber,style=authoryear,natbib=true,dashed=false,sorting=ydnt]{biblatex}
-\usepackage[maxbibnames=99,backend=biber,natbib=true,sorting=ydnt]{biblatex}
+\usepackage[maxbibnames=99,backend=biber,natbib=true,sorting=ydnt,doi=true,url=true,eprint=true]{biblatex}
 \usepackage{import}
 
 \usepackage{etoolbox,changepage}
@@ -75,8 +75,6 @@
 
 \newcommand{\markedu}{\textbf{*}}
 
-\usepackage{xspace}
-\usepackage{xcolor}
 \DeclareBibliographyCategory{education}
 % the colour definition
 %\colorlet{eduentry}{Maroon}% let 'impentry' = Maroon
@@ -84,9 +82,6 @@
 % Inform biblatex that all books in the 'important' category deserve
 % special treatment, while all others do not
 \AtEveryBibitem{%
-  \ifcategory{education}%
-%    {\color{eduentry}}%
-%    {\markedu\xspace}%
-    {\markedu\,}%
-    {}%
-  }
+  \iffieldundef{eprint}{}{\clearfield{url}}%
+  \ifcategory{education}{\markedu\,}{}%
+}

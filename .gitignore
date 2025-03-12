@@ -20,6 +20,5 @@ cv-main.tex
 *.BAK
 
 Pipfile*
-.venv/
-
+.venv
 .DS_Store
