@@ -56,5 +56,4 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            ${{ github.repository_owner }}.bib
             ${{ github.repository_owner }}.pdf
