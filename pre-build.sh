@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./build-settings.sh
+source ./build-settings-checks.sh
 
 echo "Generating main LaTeX source"
 tools/instantiate-cv-template.py
@@ -15,7 +15,7 @@ do
     mv "$bibfile" "$bibfile_raw" 
     tools/sanitize-zotero-bib.py "$bibfile_raw" "$bibfile"
 done
-#rm -f bibliography/*-raw.bib
+rm -f bibliography/*-raw.bib
 
 echo "Obtaining Google Scholar data"
 python3 tools/scholarly-metrics.py --profile "$GSCHOLAR_PROFILE" > /dev/null

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./build-settings.sh
+source ./build-settings-checks.sh
 
 # Every entry in the .bib MUST have a year to sort properly. (We don't rigidly sort by other fields, month, day, since these don't always appear).
 
