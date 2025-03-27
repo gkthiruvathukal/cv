@@ -10,6 +10,9 @@ def expand_tex_fields(entry):
     Extracts tex.* fields from the note field and promotes them to top-level fields.
     Only replaces `\\_` with `_` in keys but leaves other characters like `+` untouched.
     """
+    if 'type' in entry:
+        del entry['type']
+
     if 'note' in entry:
         note_entry = entry['note']
         del entry['note']

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./build-settings-checks.sh
+source ./build-settings.sh
 
 echo "Generating main LaTeX source"
 tools/instantiate-cv-template.py
@@ -11,19 +11,21 @@ tools/get-zotero-bibtex.sh
 echo "Sanitizing downloaded bib files"
 for bibfile in bibliography/*.bib
 do
-    bibfile_raw=${bibfile%.bib}-raw.bib
+    bibfile_raw="${bibfile%.bib}-raw.bib"
     mv "$bibfile" "$bibfile_raw" 
     tools/sanitize-zotero-bib.py "$bibfile_raw" "$bibfile"
 done
-rm -f bibliography/*-raw.bib
 
-echo "Obtaining Google Scholar data"
-python3 tools/scholarly-metrics.py --profile "$GSCHOLAR_PROFILE" > /dev/null
+if [[ -n "${GSCHOLAR_PROFILE}" ]]; then
+    echo "Obtaining Google Scholar data"
+    python3 tools/scholarly-metrics.py --profile "$GSCHOLAR_PROFILE" > /dev/null
+fi
 
-echo "Obtaining GitHub contribution data"
-datecmd=$(which gdate)
-[ -x "$datecmd" ] || datecmd=$(which date)
-first_year=$($datecmd --date="5 years ago" +%Y)
-last_year=$($datecmd --date="1 year ago" +%Y)
-python3 tools/github-commits.py  --first-year $first_year --last-year $last_year --username $GITHUB_USER --modern-cv
-sleep 5
+if [[ -n "${GITHUB_USER}" ]]; then
+    echo "Obtaining GitHub contribution data"
+    datecmd=$(which gdate)
+    [[ -x "$datecmd" ]] || datecmd=$(which date)
+    first_year=$($datecmd --date="5 years ago" +%Y)
+    last_year=$($datecmd --date="1 year ago" +%Y)
+    python3 tools/github-commits.py  --first-year $first_year --last-year $last_year --username $GITHUB_USER --modern-cv
+fi
