@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm -f bibliography/*-raw.bib
+
 source ./build-settings.sh
 
 echo "Generating main LaTeX source"
@@ -9,6 +11,7 @@ echo "Fetching bibliography from Zotero"
 tools/get-zotero-bibtex.sh
 
 echo "Sanitizing downloaded bib files"
+
 for bibfile in bibliography/*.bib
 do
     bibfile_raw="${bibfile%.bib}-raw.bib"
