@@ -54,16 +54,16 @@
     {\ifitemannotation{graduate}
       {\textit{#1}}
       {\ifitemannotation{myself}
-        {\textbf{#1}}
+	{\textbf{\textcolor{brown}{#1}}}
         {#1}}}}
 
 \renewcommand*{\mkbibnamefamily}[1]{%
   \ifitemannotation{undergrad}
-    {\textit{#1$^*$}}
+    {\textit{{#1}\thinspace$^*$}}
     {\ifitemannotation{graduate}
-      {\textit{#1$^+$}}
+      {\textit{{#1}\thinspace$^+$}}
       {\ifitemannotation{myself}
-        {\textbf{#1}}
+	{\textbf{\textcolor{brown}{#1}}}
         {#1}}}}
 
 % Macros for highlighting bibitems in a particular area
