@@ -28,9 +28,12 @@ required_vars = [
 
 ev_cache = { var : os.environ.get(var, None) for var in required_vars }
 fail = False
+
+# This could be more functional; however, we need to have messages if any variable is not set properly.
 for (var, value) in ev_cache.items():
    if not value:
       print("environment variable %(var)s not defined" % vars())
+      fail = True
 
 if fail:
    exit(1)
@@ -38,8 +41,6 @@ if fail:
 scholar_id = ev_cache['CV_GSCHOLAR_ID']
 SCHOLAR_URL="https://scholar.google.com/citations?hl=en\\&user=%(scholar_id)s"
 scholar_url = SCHOLAR_URL % vars()
-
-import argparse
 
 bibliographic_vars = {
   'citedby' : ev_cache['CV_GSCHOLAR_CITATIONS'],
