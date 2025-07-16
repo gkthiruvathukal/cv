@@ -21,7 +21,7 @@ done
 
 if [[ -n "${GSCHOLAR_PROFILE}" ]]; then
     echo "Obtaining Google Scholar data for $GSCHOLAR_PROFILE"
-    python3 tools/scholarly-metrics.py --profile "$GSCHOLAR_PROFILE" > /dev/null
+    python3 tools/scholarly-metrics-gh-vars.py > /dev/null
 fi
 
 touch 99-scholarly-bibliometrics.tex
