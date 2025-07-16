@@ -20,7 +20,7 @@ do
 done
 
 if [[ -n "${GSCHOLAR_PROFILE}" ]]; then
-    echo "Obtaining Google Scholar data for $GSCHOLAR_PROFILE"
+    echo "Obtaining Google Scholar data from GitHub Actions Variables"
     python3 tools/scholarly-metrics-gh-vars.py > /dev/null
 fi
 
