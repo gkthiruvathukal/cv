@@ -12,6 +12,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+       CV_GSCHOLAR_ID: ${{ vars.CV_GSCHOLAR_ID }}
+       CV_GSCHOLAR_CITATIONS: ${{ vars.CV_GSCHOLAR_CITATIONS }}
+       CV_GSCHOLAR_H_INDEX: ${{ vars.CV_GSCHOLAR_H_INDEX }}
+       CV_GSCHOLAR_I10_INDEX: ${{ vars.CV_GSCHOLAR_I10_INDEX }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
