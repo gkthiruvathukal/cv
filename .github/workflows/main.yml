@@ -17,7 +17,7 @@ jobs:
        CV_GSCHOLAR_CITATIONS: ${{ vars.CV_GSCHOLAR_CITATIONS }}
        CV_GSCHOLAR_H_INDEX: ${{ vars.CV_GSCHOLAR_H_INDEX }}
        CV_GSCHOLAR_I10_INDEX: ${{ vars.CV_GSCHOLAR_I10_INDEX }}
-       RELEASE_TAG_NAME: $GITHUB_REF_NAME
+       RELEASE_TAG_NAME: ${{ GITHUB_REF_NAME }}
 
     steps:
       - name: Checkout
