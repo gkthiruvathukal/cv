@@ -61,7 +61,7 @@ jobs:
         run: |
           echo "Full ref: $GITHUB_REF"
           echo "Tag name: $GITHUB_REF_NAME"
-          echo "github.ref_name: ${{ github.ref_name }} 
+          echo "github.ref_name: ${{ github.ref_name }}"
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
