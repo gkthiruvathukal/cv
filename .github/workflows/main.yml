@@ -55,6 +55,7 @@ jobs:
       - name: Check for Resulting PDF and Collated Bibliography
         run: |
           cp cv-main.pdf ${{ github.repository_owner }}.pdf
+          cp cv-main.pdf ${{ github.repository_owner }}-${{ github.ref_name }}.pdf
           cat bibliography/*.bib > ${{ github.repository_owner }}.bib
           zip -r ${{ github.repository_owner }}-bibs.zip bibliography/*.bib ${{ github.repository_owner }}.bib
       - name: Show tag info
@@ -69,4 +70,5 @@ jobs:
           files: |
             ${{ github.repository_owner }}-bibs.zip
             ${{ github.repository_owner }}.pdf
+            ${{ github.repository_owner }}-${{ github.ref_name }}.pdf
 
