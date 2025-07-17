@@ -17,6 +17,7 @@ jobs:
        CV_GSCHOLAR_CITATIONS: ${{ vars.CV_GSCHOLAR_CITATIONS }}
        CV_GSCHOLAR_H_INDEX: ${{ vars.CV_GSCHOLAR_H_INDEX }}
        CV_GSCHOLAR_I10_INDEX: ${{ vars.CV_GSCHOLAR_I10_INDEX }}
+       RELEASE_TAG_NAME: $GITHUB_REF_NAME
 
     steps:
       - name: Checkout
@@ -55,13 +56,14 @@ jobs:
       - name: Check for Resulting PDF and Collated Bibliography
         run: |
           cp cv-main.pdf ${{ github.repository_owner }}.pdf
-          cp cv-main.pdf ${{ github.repository_owner }}-${GITHUB_REF_NAME}.pdf
+          cp cv-main.pdf ${{ github.repository_owner }}-${{ RELEASE_TAG_NAME }}}.pdf
           cat bibliography/*.bib > ${{ github.repository_owner }}.bib
           zip -r ${{ github.repository_owner }}-bibs.zip bibliography/*.bib ${{ github.repository_owner }}.bib
       - name: Show tag info
         run: |
           echo "Full ref: $GITHUB_REF"
           echo "Tag name: $GITHUB_REF_NAME"
+          echo "GH Tag name: ${{ RELEASE_TAG__NAME }}"
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
@@ -69,5 +71,5 @@ jobs:
           files: |
             ${{ github.repository_owner }}-bibs.zip
             ${{ github.repository_owner }}.pdf
-            ${{ github.repository_owner }}-${GITHUB_REF_NAME}.pdf
+            ${{ github.repository_owner }}-${{ RELEASE_TAG_NAME }}.pdf
 
