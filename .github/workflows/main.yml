@@ -54,8 +54,10 @@ jobs:
           texlive_version: latest
       - name: Check for Resulting PDF and Collated Bibliography
         run: |
-          mv cv-main.pdf ${{ github.repository_owner }}.pdf
+          cp cv-main.pdf ${{ github.repository_owner }}.pdf
+          mv cv-main.pdf ${{ github.repository_owner }}-${GITHUB_REF_NAME}.pdf
           cat bibliography/*.bib > ${{ github.repository_owner }}.bib
+          cat bibliography/*.bib > ${{ github.repository_owner }}-${GITHUB_REF_NAME}.bib
           zip -r ${{ github.repository_owner }}-bibs.zip bibliography/*.bib ${{ github.repository_owner }}.bib
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -64,3 +66,5 @@ jobs:
           files: |
             ${{ github.repository_owner }}-bibs.zip
             ${{ github.repository_owner }}.pdf
+            ${{ github.repository_owner }}-${GITHUB_REF_NAME}.pdf
+
