@@ -5,6 +5,7 @@ import requests
 import argparse
 import re
 import locale
+import os
 
 from functools import reduce
 

@@ -1,8 +1,8 @@
 dist/
 build/
 bibliography/
-99-*
 cv-main.tex
+99-*.tex
 
 *.aux
 *.bbl
@@ -20,5 +20,6 @@ cv-main.tex
 *.BAK
 
 Pipfile*
-.venv
+.venv/
+
 .DS_Store
